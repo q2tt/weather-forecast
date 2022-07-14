@@ -1,0 +1,169 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: calc(100rem - 600px);
+    background-image: url('https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+.search{
+    width: 600px;
+    height: 100px;
+    padding: 30px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-top: 200px;
+     background-color: white;
+     border-radius: 20px;
+    margin-bottom: 100px;
+}
+
+.search__inp{
+    width: 300px;
+    height: 40px;
+    padding: 0 10px 0 30px ;
+    border-radius: 6px;
+    border: 2px solid rgb(205, 224, 248);
+    margin-right: 30px;
+    color: rgb(67, 169, 216);
+} 
+
+.search__btn{
+    height: 40px;
+    width: 100px;
+    border-radius: 7px;
+    border: 1px solid rgb(205, 224, 248);
+    outline: none;
+    background-image: url('https://previews.123rf.com/images/tkuzminka/tkuzminka1609/tkuzminka160900032/65027448-decorative-vector-seamless-pattern-with-hand-drawn-cute-clouds-and-winds-for-textile-design-weather-.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.search__btn:hover{
+    cursor: pointer;
+}
+
+.weather{
+    width: 98%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.weather__box{
+    width: 400px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 30px;
+     background-color: white;
+     border-radius: 20px;
+     padding: 20px;
+}
+
+.weather__section-day{
+    width: 100px;
+    border-bottom: 2px solid rgb(205, 224, 248);
+    margin: 0 auto;
+    text-align: center;
+    padding: 0;
+}
+
+.weather__time{
+    color: rgb(65, 65, 230);
+    margin: 0
+}
+
+.weather__temp-box{
+    padding-left: 20px;
+}
+
+.weather__section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(205, 224, 248);
+}
+
+.weather__temp{
+    font-size: 34px;
+    line-height: 64px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.weather__sky{
+    font-size: 20px;
+}
+
+.w-today__sity{
+    font-size: 22px;
+}
+
+.weather__temp-feel{
+    font-size: 18px;
+    font-style: italic;
+}
+
+.weather__icon-box{
+    width: 60px;
+    padding-right: 20px;
+}
+.weather__icon{
+    margin: 0 auto;
+    margin-top: 23px;
+    width: 40px;
+    height: 40px;
+}
+@media screen and (max-width: 1400px) {
+    .weather{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .search{
+        margin-bottom: 30px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .weather{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .search{
+        margin-top: 30px;
+        margin-bottom: 20px;
+        width: 300px;
+        height: 150px;
+    }
+
+    .search__inp{
+        width: 200px;
+        margin-bottom: 20px;
+    }
+
+    .search__btn{
+        display: block;
+        margin: 0 auto;
+    }
+    .weather__box{
+        width: 300px;
+        padding: 10px;
+    }
+
+    .weather__temp{
+        font-size: 24px;
+        line-height: 24px;
+        font-weight: bold;
+        margin-top: 16px;
+    }
+  }
