@@ -9,10 +9,10 @@ let store = {};
 
 
 export const getWeatherBox = (data) => {
-    const  {
-        forecast: { forecastday },
-        location: { localtime },
-    } = data;
+   
+    const { forecastday } = data.forecast
+    const { localtime } = data.location
+
     store = {
         ...store,
         forecastday,
@@ -25,44 +25,50 @@ export const getWeatherBox = (data) => {
             <p>today</p>
         </div>`;
     for (let i = 0; i < store.forecastday.length; i++) {
-        const date = forecastday[i].date;
-        const tempMorning = forecastday[i].hour[7].temp_c;
-        const feelTempMorning = forecastday[i].hour[7].feelslike_c;
-        const skyMorning = forecastday[i].hour[7].condition.text;
-        const tempDay = forecastday[i].hour[13].temp_c;
-        const feelTempDay = forecastday[i].hour[13].feelslike_c;
-        const skyDay = forecastday[i].hour[13].condition.text;
-        const tempEvening = forecastday[i].hour[19].temp_c;
-        const feelTempEvening = forecastday[i].hour[19].feelslike_c;
-        const skyEvening = forecastday[i].hour[19].condition.text;
-        const tempNight = forecastday[i].hour[23].temp_c;
-        const feelNight = forecastday[i].hour[23].feelslike_c;
-        const skyNight = forecastday[i].hour[23].condition.text;
+        let fDay = forecastday[i];
+         getEl('weather').innerHTML += getValue(fDay, i, localTime, innerDate)
+    }
+}
 
-        if (i === 0) {
-            if (localTime >= 19) {
-                inner = `
+function getValue(fDay, i, localTime, innerDate) {
+    const date = fDay.date;
+    const tempMorning = fDay.hour[7].temp_c;
+    const feelTempMorning = fDay.hour[7].feelslike_c;
+    const skyMorning = fDay.hour[7].condition.text;
+    const tempDay = fDay.hour[13].temp_c;
+    const feelTempDay = fDay.hour[13].feelslike_c;
+    const skyDay = fDay.hour[13].condition.text;
+    const tempEvening = fDay.hour[19].temp_c;
+    const feelTempEvening = fDay.hour[19].feelslike_c;
+    const skyEvening = fDay.hour[19].condition.text;
+    const tempNight = fDay.hour[23].temp_c;
+    const feelNight = fDay.hour[23].feelslike_c;
+    const skyNight = fDay.hour[23].condition.text;
+
+    if (i === 0) {
+        if (localTime >= 19) {
+            return `
                 <div class="weather__box">
                     ${innerDate}
                     ${innerNight(tempNight, skyNight, feelNight, getImage )}
                 </div>`;
-            } else if (localTime >= 13 && localTime < 19) {
-                inner = `
+        } else if (localTime >= 13 && localTime < 19) {
+            return  `
                 <div class="weather__box">
                     ${innerDate}
                     ${innerEvening(tempEvening, skyEvening, feelTempEvening, getImage )}
                     ${innerNight(tempNight, skyNight, feelNight, getImage )}
                 </div>`;
-            } else if (localTime >= 7 && localTime < 13) {
-                inner = `
+        } else if (localTime >= 7 && localTime < 13) {
+            return  `
                 <div class="weather__box">
                     ${innerDate}
-                    ${innerDay({tempDay, skyDay, feelTempDay})}
+                    ${innerDay(tempDay, skyDay, feelTempDay, getImage)}
                     ${innerEvening(tempEvening, skyEvening, feelTempEvening, getImage )}
                     ${innerNight(tempNight, skyNight, feelNight, getImage )}
                 </div>`;
-            } else {
-                inner = `
+        } else {
+            return  `
                 <div class="weather__box">
                     ${innerDate}
                     ${innerMorning(tempMorning, skyMorning, feelTempMorning, getImage )}
@@ -70,9 +76,9 @@ export const getWeatherBox = (data) => {
                     ${innerEvening(tempEvening, skyEvening, feelTempEvening, getImage )}
                     ${innerNight(tempNight, skyNight, feelNight, getImage )}
                 </div>`;
-            }
-        } else {
-            inner = ` <div class="weather__box">
+        }
+    } else {
+        return ` <div class="weather__box">
             <div class="weather__section-day">
                 <p>${date}</p>
             </div>
@@ -81,7 +87,5 @@ export const getWeatherBox = (data) => {
             ${innerEvening(tempEvening, skyEvening, feelTempEvening, getImage )}
             ${innerNight(tempNight, skyNight, feelNight, getImage )}
             </div>`;
-        }
-        getEl("weather").innerHTML += inner;
     }
 }
